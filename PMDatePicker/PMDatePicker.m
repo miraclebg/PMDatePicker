@@ -211,6 +211,8 @@ static const NSDictionary* tagsForDateFormatSymbols;
         tagsForDateFormatSymbols = PMPickerTypeForDateFormatSymbols;
     });
     
+    _useMonthsToLeftFromLocale = YES;
+    
     _horizontalPadding = 20.0f / 320.0f * self.frame.size.width;
     _verticalPadding = verticalPadding * self.frame.size.height;
     _minuteInterval = 1;
@@ -791,8 +793,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
             
             NSTextAlignment alignment = NSTextAlignmentRight;
             
-            if (_monthToLeft)
-            {
+            if (_useMonthsToLeftFromLocale && _monthToLeft) {
                 alignment = NSTextAlignmentLeft;
             }
             

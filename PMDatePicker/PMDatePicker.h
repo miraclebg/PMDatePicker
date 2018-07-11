@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSLocale      *dayLocale;
 @property (nonatomic, strong) NSLocale      *monthLocale;
 @property (nonatomic, strong) NSLocale      *yearLocale;
+@property (nonatomic, assign) BOOL useMonthsToLeftFromLocale;
 @property (nonatomic, copy)   NSCalendar    *calendar;              // default is [NSCalendar currentCalendar]. setting nil returns to default
 @property (nonatomic, strong) NSTimeZone    *timeZone;              // default is nil. use current time zone or time zone from calendar
 
