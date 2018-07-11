@@ -55,7 +55,7 @@
 
 /**
  * Returns the weekday of the current (self) date.
- * 
+ *
  * Returns 1 for Sunday, 2 for Monday ... 7 for Saturday
  */
 - (NSUInteger) weekday;
@@ -79,3 +79,4 @@
 - (BOOL) isAfter:(NSDate *) date;
 
 @end
+

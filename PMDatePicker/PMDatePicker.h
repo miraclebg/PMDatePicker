@@ -14,14 +14,17 @@
 // UIDatePicker properties & methods /copy-pasted ;)/
 @property (nonatomic, assign) UIDatePickerMode datePickerMode;      // default is UIDatePickerModeDateAndTime
 
-@property (nonatomic, retain) NSLocale      *locale;                // default is [NSLocale currentLocale]. setting nil returns to default
+@property (nonatomic, strong) NSLocale      *locale;                // default is [NSLocale currentLocale]. setting nil returns to default
+@property (nonatomic, strong) NSLocale      *dayLocale;
+@property (nonatomic, strong) NSLocale      *monthLocale;
+@property (nonatomic, strong) NSLocale      *yearLocale;
 @property (nonatomic, copy)   NSCalendar    *calendar;              // default is [NSCalendar currentCalendar]. setting nil returns to default
-@property (nonatomic, retain) NSTimeZone    *timeZone;              // default is nil. use current time zone or time zone from calendar
+@property (nonatomic, strong) NSTimeZone    *timeZone;              // default is nil. use current time zone or time zone from calendar
 
-@property (nonatomic, retain) NSDate        *date;                  // default is current date when picker created. Ignored in countdown timer mode. for that mode, picker starts at 0:00
+@property (nonatomic, strong) NSDate        *date;                  // default is current date when picker created. Ignored in countdown timer mode. for that mode, picker starts at 0:00
 
-@property (nonatomic, retain) NSDate        *minimumDate;           // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
-@property (nonatomic, retain) NSDate        *maximumDate;           // default is nil
+@property (nonatomic, strong) NSDate        *minimumDate;           // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
+@property (nonatomic, strong) NSDate        *maximumDate;           // default is nil
 @property (nonatomic, assign) NSTimeInterval countDownDuration;     // for UIDatePickerModeCountDownTimer, ignored otherwise. default is 0.0. limit is 23:59 (86,399 seconds)
 @property (nonatomic, assign) NSInteger      minuteInterval;        // display minutes wheel with interval. interval must be evenly divided into 60. default is 1. min is 1, max is 30
 
@@ -36,6 +39,21 @@
 @property (nonatomic, strong, readonly) UIImageView *shadowImageView;
 @property (nonatomic, strong, readonly) UIImageView *selectionImageView;
 
+@property (nonatomic, assign) BOOL selectionImageFullWidth;
+
+@property (nonatomic, strong) NSString *customDateFormat;
+
+@property (nonatomic, strong) UIColor *shadowColor;
+
+@property (nonatomic, strong) UIFont *textFont;
+
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *disabledTextColor;
+@property (nonatomic, strong) UIColor *todayTextColor;
+
 - (void)setColBackgroundImage:(UIImage *)colBackgroundImage;
 
+- (void)refresh;
+
 @end
+

@@ -12,25 +12,25 @@
 
 - (NSDate *)dateWithoutTime
 {
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *components = [calendar components:(NSYearCalendarUnit 
-                                                          | NSMonthCalendarUnit 
-                                                          | NSDayCalendarUnit ) 
-                                                fromDate:self];
-	
-	return [calendar dateFromComponents:components];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSYearCalendarUnit
+                                                         | NSMonthCalendarUnit
+                                                         | NSDayCalendarUnit )
+                                               fromDate:self];
+    
+    return [calendar dateFromComponents:components];
 }
 
 - (NSDate *) dateByAddingDays:(NSInteger) days months:(NSInteger) months years:(NSInteger) years
 {
-	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-	dateComponents.day = days;
-	dateComponents.month = months;
-	dateComponents.year = years;
-	
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    dateComponents.day = days;
+    dateComponents.month = months;
+    dateComponents.year = years;
+    
     return [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents
                                                          toDate:self
-                                                        options:0];    
+                                                        options:0];
 }
 
 - (NSDate *) dateByAddingDays:(NSInteger) days
@@ -48,32 +48,32 @@
     return [self dateByAddingDays:0 months:0 years:years];
 }
 
-- (NSDate *) monthStartDate 
+- (NSDate *) monthStartDate
 {
     NSDate *monthStartDate = nil;
-	[[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit
-                                    startDate:&monthStartDate 
+    [[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit
+                                    startDate:&monthStartDate
                                      interval:NULL
                                       forDate:self];
-
-	return monthStartDate;
+    
+    return monthStartDate;
 }
 
 - (NSDate *) midnightDate
 {
     NSDate *midnightDate = nil;
-	[[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
+    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
                                     startDate:&midnightDate
                                      interval:NULL
                                       forDate:self];
     
-	return midnightDate;
+    return midnightDate;
 }
 
 - (NSUInteger) numberOfDaysInMonth
 {
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit 
-                                              inUnit:NSMonthCalendarUnit 
+    return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
+                                              inUnit:NSMonthCalendarUnit
                                              forDate:self].length;
 }
 
@@ -90,8 +90,8 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
-		
-	return [formatter stringFromDate:self];
+    
+    return [formatter stringFromDate:self];
 }
 
 - (NSInteger) daysSinceDate:(NSDate *) date
@@ -101,12 +101,13 @@
 
 - (BOOL) isBefore:(NSDate *) date
 {
-	return [self timeIntervalSinceDate:date] < 0;
+    return [self timeIntervalSinceDate:date] < 0;
 }
 
 - (BOOL) isAfter:(NSDate *) date
 {
-	return [self timeIntervalSinceDate:date] > 0;
+    return [self timeIntervalSinceDate:date] > 0;
 }
 
 @end
+

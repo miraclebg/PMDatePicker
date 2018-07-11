@@ -17,9 +17,18 @@ typedef enum {
 @interface PMDatePickerTableViewCell : UITableViewCell
 
 - (PMDatePickerTableViewCell *)initWithReuseIdentifier:(NSString *)reuseIdentifier
-                                        labelAlignment:(UITextAlignment)alignment;
+                                        labelAlignment:(NSTextAlignment)alignment;
+
+@property (nonatomic, strong) UIColor *shadowColor;
+
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIFont *textFont;
+
+@property (nonatomic, strong) UIColor *disabledTextColor;
+@property (nonatomic, strong) UIColor *todayTextColor;
 
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, assign) PMStringTableViewCellType type;
 
 @end
+

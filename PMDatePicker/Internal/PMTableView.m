@@ -45,7 +45,7 @@
     [self addGestureRecognizer:__tapGestureRecognizer];
     
     self.delegate = self;
-//    self.contentSize = CGSizeMake(self.frame.size.width, 5000);
+    //    self.contentSize = CGSizeMake(self.frame.size.width, 5000);
 }
 
 - (void) awakeFromNib
@@ -83,11 +83,45 @@
     return self;
 }
 
+#pragma mark - Getters / Setters
+
+- (void)setShadowColor:(UIColor *)shadowColor {
+    if (shadowColor != _shadowColor) {
+        _shadowColor = shadowColor;
+        
+        [self reloadData];
+    }
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    if (textColor != _textColor) {
+        _textColor = textColor;
+        
+        [self reloadData];
+    }
+}
+
+- (void)setTodayTextColor:(UIColor *)todayTextColor {
+    if (todayTextColor != _todayTextColor) {
+        _todayTextColor = todayTextColor;
+        
+        [self reloadData];
+    }
+}
+
+- (void)setDisabledTextColor:(UIColor *)disabledTextColor {
+    if (disabledTextColor != _disabledTextColor) {
+        _disabledTextColor = disabledTextColor;
+        
+        [self reloadData];
+    }
+}
+
 #pragma mark - public methods -
 
 - (void) reloadData
 {
-    [__visiblecells makeObjectsPerformSelector:@selector(removeFromSuperview)];    
+    [__visiblecells makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [__unusedcells removeAllObjects];
     [__visiblecells removeAllObjects];
     [__visiblecellsByIndex removeAllObjects];
@@ -105,7 +139,7 @@
         i++;
     } while ((CGRectGetMaxY(cell.frame) < self.frame.size.height + self.contentOffset.y)
              && ((_mode == PMTableViewModeCircular) || (i < totalNumberOfRows)));
-
+    
     if ((_mode == PMTableViewModeCircular)
         && (self.contentSize.height != self.rowHeight * [self numberOfRows] * 4))
     {
@@ -171,7 +205,7 @@
     if (_mode == PMTableViewModeCircular)
     {
         NSUInteger numberOfRows = [self numberOfRows];
-        return ((index % numberOfRows) + numberOfRows) % numberOfRows;
+        return numberOfRows ? ((index % numberOfRows) + numberOfRows) % numberOfRows : 0;
     }
     
     return index;
@@ -186,8 +220,12 @@
           atScrollPosition:(UITableViewScrollPosition)scrollPosition
                   animated:(BOOL)animated
 {
+    CGRect cellRect1 = [self rectForRowAtIndex:index];
+    CGPoint newContentOffset = CGPointMake(self.contentOffset.x, cellRect1.origin.y - cellRect1.size.height * 2);
+    [self setContentOffset:newContentOffset animated:animated];
+    
     // stops current scrolling animation
-    CGPoint offset = self.contentOffset;
+    /*CGPoint offset = self.contentOffset;
     [self setContentOffset:offset animated:NO];
     
     CGRect cellRect = [self rectForRowAtIndex:index];
@@ -196,6 +234,7 @@
     CGFloat yDiff = (CGRectGetMidY(cellRect) - centralPoint.y);
     CGFloat totalHeight = numberOfRows * _rowHeight;
     yDiff = fmodf(yDiff, totalHeight);
+    
     if (yDiff != 0)
     {
         if (fabs(yDiff) > totalHeight / 2)
@@ -204,7 +243,7 @@
         }
         _autoscrolling = YES;
         CGPoint newContentOffset = CGPointMake(self.contentOffset.x, self.contentOffset.y + yDiff);
-
+        
         dispatch_async(dispatch_get_main_queue(), ^(void){
             [self setContentOffset:newContentOffset animated:animated];
         });
@@ -213,7 +252,7 @@
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             self.autoscrolling = NO;
         });
-    }
+    }*/
 }
 
 #pragma mark - private methods -
@@ -222,12 +261,15 @@
 {
     UITableViewCell *cell = [__dataSource tableView:self
                                   cellForRowAtIndex:[self realIndexForIndex:index]];
-    cell.frame = CGRectMake(0, 0, self.bounds.size.width, self.rowHeight);
-    cell.center = CGPointMake( self.bounds.size.width / 2, (index + 0.5) * self.rowHeight );
     
-    [self addSubview:cell];
-    [__visiblecells addObject:cell];
-    [__visiblecellsByIndex setObject:cell forKey:@(index)];
+    if (cell) {
+        cell.frame = CGRectMake(0, 0, self.bounds.size.width, self.rowHeight);
+        cell.center = CGPointMake( self.bounds.size.width / 2, (index + 0.5) * self.rowHeight );
+        
+        [self addSubview:cell];
+        [__visiblecells addObject:cell];
+        [__visiblecellsByIndex setObject:cell forKey:@(index)];
+    }
     
     return cell;
 }
@@ -235,6 +277,7 @@
 - (UITableViewCell *) removeCellAtIndex:(NSInteger)index
 {
     UITableViewCell *cell = [__visiblecellsByIndex objectForKey:@(index)];
+    
     if (cell)
     {
         [cell removeFromSuperview];
@@ -279,7 +322,7 @@
     CGFloat halfOfFrame   = self.bounds.size.height / 2;
     CGFloat contentHeight = [self numberOfRows] * _rowHeight;
     BOOL needToRecenter   = (currentOffset.y + contentHeight + halfOfFrame < centerY)
-                             || (currentOffset.y + halfOfFrame > centerY);
+    || (currentOffset.y + halfOfFrame > centerY);
     if (needToRecenter)
     {
         BOOL scrollDown       = currentOffset.y + halfOfFrame > centerY;
@@ -327,7 +370,7 @@
             }
             
             [self scrollToRowAtIndex:index atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        
+            
             if ([__delegate respondsToSelector:@selector(tableView:didSelectRowAtIndex:)])
             {
                 [__delegate tableView:self didSelectRowAtIndex:(_mode == PMTableViewModeDefault)?index:index % [self numberOfRows]];
@@ -337,3 +380,4 @@
 }
 
 @end
+

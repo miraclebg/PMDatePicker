@@ -18,46 +18,46 @@ static const NSUInteger verticalPadding = 10.0f / 320.0f;
 // calculate it dynamically.
 //                                  width for standard UIDatePicker bounds ------v
 #define PMDatePickerWidthsForPickerTypes @{@(PMDatePickerTagCountdownMinute): @(50.0 / 320.0), \
-                                           @(PMDatePickerTagCountdownHour)  : @(50.0 / 320.0), \
-                                           @(PMDatePickerTagAmPm)           : @(50.0 / 320.0), \
-                                           @(PMDatePickerTagMinute)         : @(50.0 / 320.0), \
-                                           @(PMDatePickerTagHour)           : @(60.0 / 320.0), \
-                                           @(PMDatePickerTagDay)            : @{@"short": @(50.0 / 320.0)\
-                                                                                , @"long": @(74.0 / 320.0)}, \
-                                           @(PMDatePickerTagMonth)          : @{@"short": @(74.0 / 320.0)\
-                                                                                , @"long": @(152.0 / 320.0)},\
-                                           @(PMDatePickerTagYear)           : @{@"short": @(78.0 / 320.0)\
-                                                                                , @"long": @(100.0 / 320.0)}, \
-                                           @(PMDatePickerTagDate)           : @(150.0 / 320.0)}
+@(PMDatePickerTagCountdownHour)  : @(50.0 / 320.0), \
+@(PMDatePickerTagAmPm)           : @(50.0 / 320.0), \
+@(PMDatePickerTagMinute)         : @(50.0 / 320.0), \
+@(PMDatePickerTagHour)           : @(60.0 / 320.0), \
+@(PMDatePickerTagDay)            : @{@"short": @(50.0 / 320.0)\
+, @"long": @(74.0 / 320.0)}, \
+@(PMDatePickerTagMonth)          : @{@"short": @(74.0 / 320.0)\
+, @"long": @(152.0 / 320.0)},\
+@(PMDatePickerTagYear)           : @{@"short": @(78.0 / 320.0)\
+, @"long": @(100.0 / 320.0)}, \
+@(PMDatePickerTagDate)           : @(150.0 / 320.0)}
 
 #define PMDatePickerTableModesForPickerTypes @{@(PMDatePickerTagCountdownMinute): @(PMTableViewModeCircular), \
-                                               @(PMDatePickerTagCountdownHour)  : @(PMTableViewModeDefault), \
-                                               @(PMDatePickerTagAmPm)           : @(PMTableViewModeDefault), \
-                                               @(PMDatePickerTagMinute)         : @(PMTableViewModeCircular), \
-                                               @(PMDatePickerTagHour)           : @(PMTableViewModeCircular), \
-                                               @(PMDatePickerTagDay)            : @(PMTableViewModeCircular), \
-                                               @(PMDatePickerTagMonth)          : @(PMTableViewModeCircular),\
-                                               @(PMDatePickerTagYear)           : @(PMTableViewModeDefault), \
-                                               @(PMDatePickerTagDate)           : @(PMTableViewModeDefault)}
+@(PMDatePickerTagCountdownHour)  : @(PMTableViewModeDefault), \
+@(PMDatePickerTagAmPm)           : @(PMTableViewModeDefault), \
+@(PMDatePickerTagMinute)         : @(PMTableViewModeDefault), \
+@(PMDatePickerTagHour)           : @(PMTableViewModeDefault), \
+@(PMDatePickerTagDay)            : @(PMTableViewModeDefault), \
+@(PMDatePickerTagMonth)          : @(PMTableViewModeDefault),\
+@(PMDatePickerTagYear)           : @(PMTableViewModeDefault), \
+@(PMDatePickerTagDate)           : @(PMTableViewModeDefault)}
 
 #define PMDateFormatsForPickerModes @{@(UIDatePickerModeTime)           : @"jjmm", \
-                                      @(UIDatePickerModeDate)           : @"ddMMMMyyyy", \
-                                      @(UIDatePickerModeDateAndTime)    : @"EEEddMMMyyyyhhmm", \
-                                      @(UIDatePickerModeCountDownTimer) : @"hhmm"}
+@(UIDatePickerModeDate)           : @"ddMMMMyyyy", \
+@(UIDatePickerModeDateAndTime)    : @"EEEddMMMyyyyhhmm", \
+@(UIDatePickerModeCountDownTimer) : @"hhmm"}
 
 #define PMPickerTypeForDateFormatSymbols @{@"a": @(PMDatePickerTagAmPm), \
-                                           @"m": @(PMDatePickerTagMinute), \
-                                           @"h": @(PMDatePickerTagHour), \
-                                           @"H": @(PMDatePickerTagHour), \
-                                           @"d": @(PMDatePickerTagDay), \
-                                           @"M": @(PMDatePickerTagMonth), \
-                                           @"y": @(PMDatePickerTagYear), \
-                                           @"E": @(PMDatePickerTagDate)}
+@"m": @(PMDatePickerTagMinute), \
+@"h": @(PMDatePickerTagHour), \
+@"H": @(PMDatePickerTagHour), \
+@"d": @(PMDatePickerTagDay), \
+@"M": @(PMDatePickerTagMonth), \
+@"y": @(PMDatePickerTagYear), \
+@"E": @(PMDatePickerTagDate)}
 
 #define PMPickerColumnsForPickerModes @{@(UIDatePickerModeTime)           : @[@(PMDatePickerTagHour), @(PMDatePickerTagMinute), @(PMDatePickerTagAmPm)], \
-                                        @(UIDatePickerModeDate)           : @[@(PMDatePickerTagDay), @(PMDatePickerTagMonth), @(PMDatePickerTagYear)], \
-                                        @(UIDatePickerModeDateAndTime)    : @[@(PMDatePickerTagDate), @(PMDatePickerTagYear), @(PMDatePickerTagHour), @(PMDatePickerTagMinute)], \
-                                        @(UIDatePickerModeCountDownTimer) : @[@(PMDatePickerTagHour), @(PMDatePickerTagMinute)]}
+@(UIDatePickerModeDate)           : @[@(PMDatePickerTagDay), @(PMDatePickerTagMonth), @(PMDatePickerTagYear)], \
+@(UIDatePickerModeDateAndTime)    : @[@(PMDatePickerTagDate), @(PMDatePickerTagYear), @(PMDatePickerTagHour), @(PMDatePickerTagMinute)], \
+@(UIDatePickerModeCountDownTimer) : @[@(PMDatePickerTagHour), @(PMDatePickerTagMinute)]}
 
 typedef NS_ENUM(NSInteger, PMDatePickerTags) {
     PMDatePickerTagCountdownMinute,
@@ -89,7 +89,12 @@ static const NSDictionary* tagsForDateFormatSymbols;
 @property (nonatomic, strong) NSDateComponents *currentDateComponents;
 @property (nonatomic, strong) NSDateComponents *maxDateComponents;
 @property (nonatomic, strong) NSDateComponents *minDateComponents;
+
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) NSDateFormatter *dayDateFormatter;
+@property (nonatomic, strong) NSDateFormatter *monthDateFormatter;
+@property (nonatomic, strong) NSDateFormatter *yearDateFormatter;
+
 @property (nonatomic, assign) CGFloat horizontalPadding;
 @property (nonatomic, assign) CGFloat verticalPadding;
 @property (nonatomic, assign) BOOL is24Hour;
@@ -162,12 +167,15 @@ static const NSDictionary* tagsForDateFormatSymbols;
     return self;
 }
 
-- (void) didMoveToSuperview;
+/*
+- (void) didMoveToSuperview
 {
     [super didMoveToSuperview];
-    self.locale = _locale;
-    self.date = _date;
-}
+    
+    if (self.superview) {
+        [self refreshUI];
+    }
+}*/
 
 - (void) initializeTableViewWithTag:(PMDatePickerTags)tag
 {
@@ -180,6 +188,11 @@ static const NSDictionary* tagsForDateFormatSymbols;
     tableView.showsVerticalScrollIndicator = NO;
     tableView.tag = tag;
     tableView.mode = [modesForColumnTypes[@(tag)] integerValue];
+    tableView.textFont = self.textFont;
+    tableView.shadowColor = self.shadowColor;
+    tableView.textColor = self.textColor;
+    tableView.disabledTextColor = self.disabledTextColor;
+    tableView.todayTextColor = self.todayTextColor;
     
     [_tableViewsByTag setObject:tableView forKey:@(tag)];
     
@@ -202,21 +215,21 @@ static const NSDictionary* tagsForDateFormatSymbols;
     _verticalPadding = verticalPadding * self.frame.size.height;
     _minuteInterval = 1;
     _rowHeight = 45.0f;
-
+    
     _datePickerMode = UIDatePickerModeDate;
-    _calendar = [NSCalendar currentCalendar];
+    _calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     _date = [NSDate date];
     _font = [UIFont boldSystemFontOfSize:24]; // default
     
     _frameImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     [self addSubview:_frameImageView];
-
+    
     _shadowImageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds
-                                                                    , _horizontalPadding
-                                                                    , _verticalPadding)];
+                                                                      , _horizontalPadding
+                                                                      , _verticalPadding)];
     _shadowImageView.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:_shadowImageView];
-
+    
     _selectionImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self setSelectionImageViewHeight:_rowHeight];
     [self addSubview:_selectionImageView];
@@ -224,7 +237,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
     _visibleTableViewsByTag = [NSMutableDictionary dictionaryWithCapacity:_PMDatePickerTagCount];
     _tableViewsByTag = [NSMutableDictionary dictionaryWithCapacity:_PMDatePickerTagCount];
     _tableViewOverlays = [NSMutableArray arrayWithCapacity:_PMDatePickerTagCount];
-
+    
     [self initializeTableViewWithTag:PMDatePickerTagCountdownMinute];
     [self initializeTableViewWithTag:PMDatePickerTagCountdownHour];
     [self initializeTableViewWithTag:PMDatePickerTagAmPm];
@@ -236,11 +249,14 @@ static const NSDictionary* tagsForDateFormatSymbols;
     [self initializeTableViewWithTag:PMDatePickerTagDate];
     
     _dateFormatter = [[NSDateFormatter alloc] init];
+    _dayDateFormatter = [[NSDateFormatter alloc] init];
+    _monthDateFormatter = [[NSDateFormatter alloc] init];
+    _yearDateFormatter = [[NSDateFormatter alloc] init];
 }
 
 - (void) reloadComponents
 {
-    NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:dateFormatsForPickerModes[@(_datePickerMode)]
+    NSString *dateFormat = self.customDateFormat ?: [NSDateFormatter dateFormatFromTemplate:dateFormatsForPickerModes[@(_datePickerMode)]
                                                            options:0
                                                             locale:_locale];
     NSInteger index = [dateFormat hasPrefix:@"'"]?1:0;
@@ -277,7 +293,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
         [arr addObject:index];
         [indexForComponent setObject:index forKey:component];
     }
-    
+
     [arr sortUsingSelector:@selector(compare:)];
     NSMutableArray *order = [arr mutableCopy];
     
@@ -291,41 +307,105 @@ static const NSDictionary* tagsForDateFormatSymbols;
     [[_tableViewsByTag allValues] makeObjectsPerformSelector:@selector(reloadData)];
 }
 
-#pragma mark - public methods -
-- (void) setLocale:(NSLocale *)locale
+#pragma mark - Getters / Setters
+
+- (void)setTextFont:(UIFont *)textFont {
+    if (textFont != _textFont) {
+        _textFont = textFont;
+        
+        for (NSNumber *tag in _tableViewsByTag)
+        {
+            PMDatePickerTableView *tableView = _tableViewsByTag[tag];
+            tableView.textFont = _textFont;
+        }
+    }
+}
+
+- (void)setShadowColor:(UIColor *)shadowColor {
+    if (shadowColor != _shadowColor) {
+        _shadowColor = shadowColor;
+        
+        for (NSNumber *tag in _tableViewsByTag)
+        {
+            PMDatePickerTableView *tableView = _tableViewsByTag[tag];
+            tableView.shadowColor = _shadowColor;
+        }
+    }
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    if (textColor != _textColor) {
+        _textColor = textColor;
+        
+        for (NSNumber *tag in _tableViewsByTag)
+        {
+            PMDatePickerTableView *tableView = _tableViewsByTag[tag];
+            tableView.textColor = _textColor;
+        }
+    }
+}
+
+- (void)setTodayTextColor:(UIColor *)todayTextColor {
+    if (todayTextColor != _todayTextColor) {
+        _todayTextColor = todayTextColor;
+        
+        for (NSNumber *tag in _tableViewsByTag)
+        {
+            PMDatePickerTableView *tableView = _tableViewsByTag[tag];
+            tableView.todayTextColor = _todayTextColor;
+        }
+    }
+}
+
+- (void)setDisabledTextColor:(UIColor *)disabledTextColor {
+    if (disabledTextColor != _disabledTextColor) {
+        _disabledTextColor = disabledTextColor;
+        
+       
+        for (NSNumber *tag in _tableViewsByTag)
+        {
+            PMDatePickerTableView *tableView = _tableViewsByTag[tag];
+            tableView.disabledTextColor = _disabledTextColor;
+        }
+    }
+}
+
+- (void)setLocale:(NSLocale *)locale
 {
-    _locale = locale;
     if (locale == nil)
     {
         _locale = [NSLocale currentLocale];
     }
     
-    _is24Hour = [_locale is24Hour];
-    if (_datePickerMode == UIDatePickerModeDate)
-    {
-        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:dateFormatsForPickerModes[@(UIDatePickerModeDate)]
-                                                               options:0
-                                                                locale:_locale];
-        _monthToLeft = [dateFormat rangeOfString:@"d"].location < [dateFormat rangeOfString:@"M"].location;
+    if (_locale != locale) {
+        _locale = locale;
+        
+        [self updateLocaleUI];
     }
-    _dateFormatter.locale = _locale;
-    
-    _dayStrings = [NSMutableArray arrayWithCapacity:31];
-    NSDateComponents *c = [[NSDateComponents alloc] init];
-    NSString *dayFormatString = [NSDateFormatter dateFormatFromTemplate:@"dd"
-                                                                options:0
-                                                                 locale:_locale];
-    for (NSInteger i = 0; i < 31; i++)
-    {
-        c.day = i + 1;
-        NSDate *dayDate = [_calendar dateFromComponents:c];
-        [_dateFormatter setDateFormat:dayFormatString];
-        [_dayStrings addObject:[_dateFormatter stringFromDate:dayDate]];
-    }
-    
-    [self reloadComponents];
+}
 
-    self.date = _date;
+- (void)setDayLocale:(NSLocale *)dayLocale {
+    if (dayLocale != _dayLocale) {
+        _dayLocale = dayLocale;
+        
+        [self updateLocaleUI];
+    }
+}
+
+- (void)setMonthLocale:(NSLocale *)monthLocale {
+    if (monthLocale != _monthLocale) {
+        _monthLocale = monthLocale;
+        
+        [self updateLocaleUI];
+    }
+}
+
+- (void)setYearLocale:(NSLocale *)yearLocale {
+    if (yearLocale != _yearLocale) {
+        _yearLocale = yearLocale;
+        
+        [self updateLocaleUI];
+    }
 }
 
 - (void)setDate:(NSDate *)date
@@ -340,24 +420,170 @@ static const NSDictionary* tagsForDateFormatSymbols;
 
 - (void)setDate:(NSDate *)date animated:(BOOL)animated dontAutoscrollTablesWithTags:(NSArray *)tagsToIgnore
 {
-    _date = date;
-    if (!_date)
-    {
-        _date = [NSDate date];
+    NSDate *d = date ?: [NSDate date];
+    
+    if (_date != d) {
+        _date = d;
+        [self refreshUI:animated dontAutoscrollTablesWithTags:tagsToIgnore];
     }
+}
+
+- (void)setMaximumDate:(NSDate *)maximumDate
+{
+    if (_maximumDate != maximumDate) {
+        _maximumDate = maximumDate;
+        
+        if (!maximumDate)
+        {
+            _maxDateComponents = nil;
+            return;
+        }
+        
+        _maxDateComponents = [_calendar components:(NSCalendarUnitYear
+                                                    | NSCalendarUnitMonth
+                                                    | NSCalendarUnitDay
+                                                    | NSCalendarUnitHour
+                                                    | NSCalendarUnitMinute )
+                                          fromDate:_maximumDate];
+        [self checkDateConstraints:NO];
+    }
+}
+
+- (void)setMinimumDate:(NSDate *)minimumDate
+{
+    if (_minimumDate != minimumDate) {
+        _minimumDate = minimumDate;
+        
+        if (!minimumDate)
+        {
+            _minDateComponents = nil;
+            return;
+        }
+        
+        _minDateComponents = [_calendar components:(NSCalendarUnitYear
+                                                    | NSCalendarUnitMonth
+                                                    | NSCalendarUnitDay
+                                                    | NSCalendarUnitHour
+                                                    | NSCalendarUnitMinute )
+                                          fromDate:_minimumDate];
+        [self checkDateConstraints:NO];
+    }
+}
+
+
+- (void)setCalendar:(NSCalendar *)calendar
+{
+    if (_calendar != calendar) {
+        _calendar = calendar;
+        _todayComponents = [_calendar components:(NSCalendarUnitYear
+                                                  | NSCalendarUnitMonth
+                                                  | NSCalendarUnitDay
+                                                  | NSCalendarUnitHour
+                                                  | NSCalendarUnitMinute )
+                                        fromDate:[NSDate date]];
+        [self refreshUI];
+    }
+}
+
+- (void)setDatePickerMode:(UIDatePickerMode)datePickerMode
+{
+    if (_datePickerMode != datePickerMode) {
+        _datePickerMode = datePickerMode;
+        [self reloadComponents];
+    }
+}
+
+- (void)setRowHeight:(CGFloat)rowHeight
+{
+    if (_rowHeight != rowHeight) {
+        _rowHeight = rowHeight;
+        
+        for (NSNumber *tag in _tableViewsByTag)
+        {
+            PMDatePickerTableView *tableView = _tableViewsByTag[tag];
+            tableView.rowHeight = _rowHeight;
+            [tableView reloadData];
+        }
+        [self setSelectionImageViewHeight:_rowHeight];
+    }
+}
+
+- (void)setMinuteInterval:(NSInteger)minuteInterval
+{
+    NSInteger mi = minuteInterval;
+    
+    if (mi != _minuteInterval) {
+        if ((mi <= 0) || (mi > 30) || (60 % mi != 0))
+        {
+            NSLog( @"interval must be evenly divided into 60. default is 1. min is 1, max is 30" );
+            mi = 1;
+            
+            return;
+        }
+        
+        _minuteInterval = mi;
+    }
+}
+
+#pragma mark - Actions
+
+- (void)updateLocaleUI {
+    
+    _is24Hour = [_locale is24Hour];
+    
+    _dateFormatter.locale = _locale;
+    _dayDateFormatter.locale = _dayLocale ?: _locale;
+    _monthDateFormatter.locale = _monthLocale ?: _locale;
+    _yearDateFormatter.locale = _yearLocale ?: _locale;
+    
+    [_yearDateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyy"
+                                                                  options:0 locale:_yearDateFormatter.locale]];
+    
+    if (_datePickerMode == UIDatePickerModeDate)
+    {
+        NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:dateFormatsForPickerModes[@(UIDatePickerModeDate)]
+                                                               options:0
+                                                                locale:_locale];
+        _monthToLeft = [dateFormat rangeOfString:@"d"].location < [dateFormat rangeOfString:@"M"].location;
+    }
+    
+    _dayStrings = [NSMutableArray arrayWithCapacity:31];
+    
+    NSDateComponents *c = [[NSDateComponents alloc] init];
+    NSString *dayFormatString = [NSDateFormatter dateFormatFromTemplate:@"dd"
+                                                                options:0
+                                                                 locale:_dayDateFormatter.locale];
+    [_dayDateFormatter setDateFormat:dayFormatString];
+    
+    for (NSInteger i = 0; i < 31; i++)
+    {
+        c.day = i + 1;
+        NSDate *dayDate = [_calendar dateFromComponents:c];
+        [_dayStrings addObject:[_dayDateFormatter stringFromDate:dayDate]];
+    }
+    
+    [self reloadComponents];
+    [self refreshUI];
+}
+
+- (void)refreshUI {
+    [self refreshUI:NO dontAutoscrollTablesWithTags:nil];
+}
+
+- (void)refreshUI:(BOOL)animated dontAutoscrollTablesWithTags:(NSArray *)tagsToIgnore  {
     [self sendActionsForControlEvents:UIControlEventValueChanged];
-
-    _numberOfDaysInSelectedMonth = [_calendar rangeOfUnit:NSDayCalendarUnit
-                                                   inUnit:NSMonthCalendarUnit
+    
+    _numberOfDaysInSelectedMonth = [_calendar rangeOfUnit:NSCalendarUnitDay
+                                                   inUnit:NSCalendarUnitMonth
                                                   forDate:_date].length;
-
+    
     if (![self checkDateConstraints:animated] && (_datePickerMode != UIDatePickerModeCountDownTimer))
     {
-        _currentDateComponents = [_calendar components:(NSYearCalendarUnit
-                                                        | NSMonthCalendarUnit
-                                                        | NSDayCalendarUnit
-                                                        | NSHourCalendarUnit
-                                                        | NSMinuteCalendarUnit )
+        _currentDateComponents = [_calendar components:(NSCalendarUnitYear
+                                                        | NSCalendarUnitMonth
+                                                        | NSCalendarUnitDay
+                                                        | NSCalendarUnitHour
+                                                        | NSCalendarUnitMinute )
                                               fromDate:_date];
         for (NSNumber *tag in columnsForPickerModes[@(_datePickerMode)])
         {
@@ -365,9 +591,11 @@ static const NSDictionary* tagsForDateFormatSymbols;
             {
                 continue;
             }
+            
             PMDatePickerTableView *tableView = _visibleTableViewsByTag[tag];
             NSInteger row = -1;
             [tableView setNeedsLayout];
+            
             switch ([tag integerValue]) {
                 case PMDatePickerTagYear:
                     row += [_currentDateComponents year];
@@ -379,7 +607,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
                     row += [_currentDateComponents day];
                     break;
                 case PMDatePickerTagHour:
-                    row += [_currentDateComponents hour] + 1;
+                    row += ([_currentDateComponents hour] > 12 ? [_currentDateComponents hour] - 12 : [_currentDateComponents hour]) + 1;
                     break;
                 case PMDatePickerTagMinute:
                     row += floor((double)[_currentDateComponents minute] / (double)_minuteInterval) + 1;
@@ -398,67 +626,12 @@ static const NSDictionary* tagsForDateFormatSymbols;
     }
 }
 
-- (void)setMaximumDate:(NSDate *)maximumDate
-{
-    _maximumDate = maximumDate;
-    if (!maximumDate)
-    {
-        _maxDateComponents = nil;
-        return;
-    }
-    
-    _maxDateComponents = [_calendar components:(NSYearCalendarUnit
-                                                | NSMonthCalendarUnit
-                                                | NSDayCalendarUnit
-                                                | NSHourCalendarUnit
-                                                | NSMinuteCalendarUnit )
-                                      fromDate:_maximumDate];
-    [self checkDateConstraints:NO];
-}
-
-- (void)setMinimumDate:(NSDate *)minimumDate
-{
-    _minimumDate = minimumDate;
-    if (!minimumDate)
-    {
-        _minDateComponents = nil;
-        return;
-    }
-    
-    _minDateComponents = [_calendar components:(NSYearCalendarUnit
-                                                | NSMonthCalendarUnit
-                                                | NSDayCalendarUnit
-                                                | NSHourCalendarUnit
-                                                | NSMinuteCalendarUnit )
-                                      fromDate:_minimumDate];
-    [self checkDateConstraints:NO];
-}
-
-
-- (void)setCalendar:(NSCalendar *)calendar
-{
-    _calendar = calendar;
-	_todayComponents = [_calendar components:(NSYearCalendarUnit
-                                              | NSMonthCalendarUnit
-                                              | NSDayCalendarUnit
-                                              | NSHourCalendarUnit
-                                              | NSMinuteCalendarUnit )
-                                    fromDate:[NSDate date]];
-    
-    if (_date)
-    {
-        // renew date so component reposition it's tableviews
-        self.date = _date;
-    }
-}
-
-- (void)setDatePickerMode:(UIDatePickerMode)datePickerMode
-{
-    _datePickerMode = datePickerMode;
+- (void)refresh {
     [self reloadComponents];
+    [self refreshUI];
 }
 
-- (BOOL) checkDateConstraints:(BOOL)animated
+- (BOOL)checkDateConstraints:(BOOL)animated
 {
     if ([[_date dateWithoutTime] isBefore:[_minimumDate dateWithoutTime]])
     {
@@ -475,36 +648,10 @@ static const NSDictionary* tagsForDateFormatSymbols;
         _currentDateComponents.day = _numberOfDaysInSelectedMonth;
         _date = [_calendar dateFromComponents:_currentDateComponents];
         [self setDate:_date animated:animated];
-        return YES;        
+        return YES;
     }
     
     return NO;
-}
-
-- (void)setRowHeight:(CGFloat)rowHeight
-{
-    _rowHeight = rowHeight;
-    
-    for (NSNumber *tag in _tableViewsByTag)
-    {
-        PMDatePickerTableView *tableView = _tableViewsByTag[tag];
-        tableView.rowHeight = _rowHeight;
-        [tableView reloadData];
-    }
-    [self setSelectionImageViewHeight:_rowHeight];
-}
-
-- (void)setMinuteInterval:(NSInteger)minuteInterval
-{
-    if ((minuteInterval <= 0) || (minuteInterval > 30) || (60 % minuteInterval != 0))
-    {
-        NSLog( @"interval must be evenly divided into 60. default is 1. min is 1, max is 30" );
-        _minuteInterval = 1;
-
-        return;
-    }
-    
-    _minuteInterval = minuteInterval;
 }
 
 #pragma mark - PMTableViewDataSource -
@@ -529,7 +676,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
             {
                 result = result / 2;
             }
-
+            
             break;
         }
         case PMDatePickerTagMinute:
@@ -551,45 +698,58 @@ static const NSDictionary* tagsForDateFormatSymbols;
     if (!cell)
     {
         cell = [[PMDatePickerTableViewCell alloc] initWithReuseIdentifier:@"PMDatePickerTableViewCellId"
-                                                           labelAlignment:(tableView.tag == PMDatePickerTagMonth)?UITextAlignmentRight:UITextAlignmentCenter];
-        cell.label.font = _font;
+                                                           labelAlignment:(tableView.tag == PMDatePickerTagMonth) ?
+                                                    NSTextAlignmentRight : NSTextAlignmentCenter];
+        cell.textFont = self.textFont;
+        cell.shadowColor = self.shadowColor;
+        cell.disabledTextColor = self.disabledTextColor;
+        cell.todayTextColor = self.todayTextColor;
+        cell.textColor = self.textColor;
     }
-
+    
     cell.type = PMStringTableViewCellTypeDefault;
+    
     switch (tableView.tag) {
         case PMDatePickerTagAmPm:
         {
-            cell.label.text = (index == 0)?@"AM":@"PM";
-            cell.label.font = [_font fontWithSize:(_font.pointSize - 4.0f)];
-
+            cell.label.text = (index == 0) ? _calendar.AMSymbol : _calendar.PMSymbol;
+            cell.textFont = [self.textFont fontWithSize:(self.textFont.pointSize - 4.0f)];
+            
             break;
         }
         case PMDatePickerTagMinute:
         {
             NSInteger minute = index;
-            cell.label.text = [NSString stringWithFormat:@"%02d", minute * _minuteInterval];
+            cell.textFont = self.textFont;
+            cell.label.text = [NSString stringWithFormat:@"%02ld", minute * _minuteInterval];
             break;
         }
+            
         case PMDatePickerTagHour:
         {
             NSInteger hour = index;
+            
+            cell.textFont = self.textFont;
+            
             if (!_is24Hour)
             {
                 hour = (index + 11) % 12 + 1;
             }
-//            NSInteger day = _currentDateComponents.day;
-//            NSInteger month = _currentDateComponents.month;
-//            NSInteger year = _currentDateComponents.year;
-            cell.label.text = [NSString stringWithFormat:@"%d", hour];
-//            if ((_minimumDate && (((year == [_minDateComponents year]) && (month == [_minDateComponents month]) && (day < [_minDateComponents day]))))
-//                     || (_maximumDate && ((year == [_maxDateComponents year]) && (month == [_maxDateComponents month]) && (day > [_maxDateComponents day]))))
-//            {
-//                cell.type = PMStringTableViewCellTypeDisabled;
-//            }
+            //            NSInteger day = _currentDateComponents.day;
+            //            NSInteger month = _currentDateComponents.month;
+            //            NSInteger year = _currentDateComponents.year;
+            cell.label.text = [NSString stringWithFormat:@"%ld", hour];
+            //            if ((_minimumDate && (((year == [_minDateComponents year]) && (month == [_minDateComponents month]) && (day < [_minDateComponents day]))))
+            //                     || (_maximumDate && ((year == [_maxDateComponents year]) && (month == [_maxDateComponents month]) && (day > [_maxDateComponents day]))))
+            //            {
+            //                cell.type = PMStringTableViewCellTypeDisabled;
+            //            }
             break;
         }
         case PMDatePickerTagDay:
         {
+            cell.textFont = self.textFont;
+            
             NSInteger day = index + 1;
             NSInteger month = _currentDateComponents.month;
             NSInteger year = _currentDateComponents.year;
@@ -602,8 +762,8 @@ static const NSDictionary* tagsForDateFormatSymbols;
                                         && (month == [_minDateComponents month])
                                         && (day < [_minDateComponents day]))))
                      || (_maximumDate && ((year == [_maxDateComponents year])
-                                       && (month == [_maxDateComponents month])
-                                       && (day > [_maxDateComponents day])))
+                                          && (month == [_maxDateComponents month])
+                                          && (day > [_maxDateComponents day])))
                      || day > _numberOfDaysInSelectedMonth)
             {
                 cell.type = PMStringTableViewCellTypeDisabled;
@@ -612,40 +772,45 @@ static const NSDictionary* tagsForDateFormatSymbols;
         }
         case PMDatePickerTagMonth:
         {
+            cell.textFont = self.textFont;
+            
             NSInteger month = index + 1;
             NSInteger year = _currentDateComponents.year;
-            cell.label.text = [_dateFormatter monthSymbols][month - 1];
+            cell.label.text = [_monthDateFormatter monthSymbols][month - 1];
+            
             if (month == [_todayComponents month])
             {
                 cell.type = PMStringTableViewCellTypeToday;
-            }
-            else if ((_minimumDate && ((year == [_minDateComponents year])
+            } else if ((_minimumDate && ((year == [_minDateComponents year])
                                        && (month < [_minDateComponents month])))
-                  || (_maximumDate && ((year == [_maxDateComponents year])
-                                       && (month > [_maxDateComponents month]))))
+                     || (_maximumDate && ((year == [_maxDateComponents year])
+                                          && (month > [_maxDateComponents month]))))
             {
                 cell.type = PMStringTableViewCellTypeDisabled;
             }
-            UITextAlignment alignment = UITextAlignmentRight;
+            
+            NSTextAlignment alignment = NSTextAlignmentRight;
+            
             if (_monthToLeft)
             {
-                alignment = UITextAlignmentLeft;
+                alignment = NSTextAlignmentLeft;
             }
+            
             cell.label.textAlignment = alignment;
-
-
+            
             break;
         }
         case PMDatePickerTagYear:
         {
+            cell.textFont = self.textFont;
+            
             NSInteger year = index + 1;
             NSDateComponents *c = [[NSDateComponents alloc] init];
             c.year = year;
             NSDate *yearDate = [_calendar dateFromComponents:c];
-            [_dateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyy"
-                                                                          options:0 locale:_locale]];
-            cell.label.text = [_dateFormatter stringFromDate:yearDate];
-            cell.label.textAlignment = UITextAlignmentCenter;
+            
+            cell.label.text = [_yearDateFormatter stringFromDate:yearDate];
+            cell.label.textAlignment = NSTextAlignmentCenter;
             if (year == [_todayComponents year])
             {
                 cell.type = PMStringTableViewCellTypeToday;
@@ -680,8 +845,8 @@ static const NSDictionary* tagsForDateFormatSymbols;
         {
             comps.year = index + 1;
         }
-        NSInteger numberOfDaysInSelectedMonth = [_calendar rangeOfUnit:NSDayCalendarUnit
-                                                                inUnit:NSMonthCalendarUnit
+        NSInteger numberOfDaysInSelectedMonth = [_calendar rangeOfUnit:NSCalendarUnitDay
+                                                                inUnit:NSCalendarUnitMonth
                                                                forDate:[_calendar dateFromComponents:comps]].length;
         
         if (_currentDateComponents.day > numberOfDaysInSelectedMonth)
@@ -709,7 +874,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
                     add = 12;
                 }
             }
-            _currentDateComponents.hour = index + 1 + add;
+            _currentDateComponents.hour = index + add;
             break;
         }
         case PMDatePickerTagDay:
@@ -734,10 +899,10 @@ static const NSDictionary* tagsForDateFormatSymbols;
     }
     
     _date = [_calendar dateFromComponents:_currentDateComponents];
-    _numberOfDaysInSelectedMonth = [_calendar rangeOfUnit:NSDayCalendarUnit
-                                                   inUnit:NSMonthCalendarUnit
+    _numberOfDaysInSelectedMonth = [_calendar rangeOfUnit:NSCalendarUnitDay
+                                                   inUnit:NSCalendarUnitMonth
                                                   forDate:_date].length;
-
+    
     for (NSNumber *tag in _visibleTableViewsByTag)
     {
         PMDatePickerTableView *tableView = _visibleTableViewsByTag[tag];
@@ -752,7 +917,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
         [self setDate:_date animated:YES];
         return;
     }
-
+    
     if (![self checkDateConstraints:YES])
     {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -776,6 +941,14 @@ dontAutoscrollTablesWithTags:@[@(PMDatePickerTagHour), @(PMDatePickerTagMinute)]
 }
 
 #pragma mark - view customization methods -
+
+- (void)setSelectionImageFullWidth:(BOOL)selectionImageFullWidth {
+    if (selectionImageFullWidth != _selectionImageFullWidth) {
+        _selectionImageFullWidth = selectionImageFullWidth;
+        [self setSelectionImageViewHeight:_rowHeight];
+    }
+}
+
 - (void)setColBackgroundImage:(UIImage *)colBackgroundImage
 {
     for (UIImageView *iv in _tableViewOverlays)
@@ -783,16 +956,33 @@ dontAutoscrollTablesWithTags:@[@(PMDatePickerTagHour), @(PMDatePickerTagMinute)]
         iv.image = colBackgroundImage;
     }
 }
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self setSelectionImageViewHeight:_rowHeight];
+    [self refresh];
+}
+
 #pragma mark - private methods -
 
 - (void)setSelectionImageViewHeight:(CGFloat)newHeight
 {
     CGRect frame = _selectionImageView.frame;
-    frame.size.height = newHeight;
-    frame.size.width = self.frame.size.width - _horizontalPadding * 2;
-    _selectionImageView.frame = frame;
-    _selectionImageView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    _selectionImageView.frame = CGRectIntegral(_selectionImageView.frame);
+    
+    if (_selectionImageFullWidth) {
+        _selectionImageView.frame = CGRectMake(0,
+                                               CGRectGetMidY(self.bounds),
+                                               self.bounds.size.width,
+                                               newHeight
+                                               );
+    } else {
+        frame.size.height = newHeight;
+        frame.size.width =  self.frame.size.width - _horizontalPadding * 2;
+        _selectionImageView.frame = frame;
+        _selectionImageView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+        _selectionImageView.frame = CGRectIntegral(_selectionImageView.frame);
+    }
 }
 
 - (void)setTableViewsOrder:(NSArray *)order
@@ -891,4 +1081,5 @@ dontAutoscrollTablesWithTags:@[@(PMDatePickerTagHour), @(PMDatePickerTagMinute)]
 }
 
 @end
+
 

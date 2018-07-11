@@ -11,18 +11,17 @@
 @interface PMDatePickerTableView ()
 
 - (void) alignRowsToCenterAnimated:(BOOL)animated;
+
 @property (nonatomic, strong) NSTimer *centerTimer;
 
 @end
 
 @implementation PMDatePickerTableView
 
-- (void) reloadTimer
-{
+- (void)reloadTimer {
     [_centerTimer invalidate];
     
-    if (!self.autoscrolling)
-    {
+    if (!self.autoscrolling) {
         _centerTimer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                                         target:self
                                                       selector:@selector(alignRowsToCenterTimerHandler:)
@@ -33,13 +32,11 @@
     }
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [super scrollViewDidScroll:scrollView];
     [_centerTimer invalidate];
-
-    if (!self.tracking)
-    {
+    
+    if (!self.tracking) {
         [self reloadTimer];
     }
 }
@@ -59,6 +56,7 @@
 - (void) alignRowsToCenterTimerHandler:(NSTimer *)timer
 {
     [_centerTimer invalidate];
+    
     if (!self.autoscrolling)
     {
         [self alignRowsToCenterAnimated:YES];
@@ -67,12 +65,18 @@
 
 - (void) alignRowsToCenterAnimated:(BOOL)animated
 {
+    NSInteger numberOfRows = [self numberOfRows];
+    
+    if (!numberOfRows) {
+        return;
+    }
+    
     CGPoint centralPoint = CGPointMake(CGRectGetMidX(self.bounds), self.contentOffset.y + self.frame.size.height / 2);
     NSInteger centralCellIndex = [self indexForRowAtPoint:centralPoint];
     UITableViewCell *cell = [self cellForRowAtIndex:centralCellIndex];
     CGFloat yDiff = cell.center.y - centralPoint.y;
     CGPoint newContentOffset = CGPointMake(self.contentOffset.x, self.contentOffset.y + yDiff);
-    NSInteger newIndex = [self indexForRowAtPoint:CGPointMake(newContentOffset.x, newContentOffset.y + self.frame.size.height / 2)] % [self numberOfRows];
+    NSInteger newIndex = [self indexForRowAtPoint:CGPointMake(newContentOffset.x, newContentOffset.y + self.frame.size.height / 2)] % numberOfRows;
     
     self.autoscrolling = YES;
     [self setContentOffset:newContentOffset animated:animated];
@@ -125,3 +129,4 @@
     }
 }
 @end
+

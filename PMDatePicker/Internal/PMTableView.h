@@ -29,6 +29,14 @@ typedef NS_ENUM(NSInteger, PMTableViewScrollDirection) {
 @property (nonatomic, assign) PMTableViewMode mode;
 @property (nonatomic, assign, getter=isAutoscrolling) BOOL autoscrolling;
 
+@property (nonatomic, strong) UIColor *shadowColor;
+
+@property (nonatomic, strong) UIFont *textFont;
+
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *disabledTextColor;
+@property (nonatomic, strong) UIColor *todayTextColor;
+
 - (void) reloadData;
 - (NSInteger) numberOfRows;
 - (UITableViewCell *) dequeueReusableCell;
@@ -62,4 +70,5 @@ typedef NS_ENUM(NSInteger, PMTableViewScrollDirection) {
               cellForRowAtIndex:(NSInteger)index;
 
 @end
+
 
