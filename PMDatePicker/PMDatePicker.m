@@ -289,6 +289,9 @@ static const NSDictionary* tagsForDateFormatSymbols;
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity:[componentsSet count]];
     NSMutableDictionary *indexForComponent = [NSMutableDictionary dictionaryWithCapacity:[componentsSet count]];
     
+    free(_characters);
+    _characters = NULL;
+    
     for (NSString *component in componentsSet)
     {
         NSNumber *index = @([dateFormat rangeOfString:component].location);
@@ -710,6 +713,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
     }
     
     cell.type = PMStringTableViewCellTypeDefault;
+    cell.label.textAlignment = NSTextAlignmentLeft;
     
     switch (tableView.tag) {
         case PMDatePickerTagAmPm:
@@ -723,7 +727,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
         {
             NSInteger minute = index;
             cell.textFont = self.textFont;
-            cell.label.text = [NSString stringWithFormat:@"%02ld", minute * _minuteInterval];
+            cell.label.text = [NSString stringWithFormat:@"%02ld", (long)minute * _minuteInterval];
             break;
         }
             
@@ -735,12 +739,12 @@ static const NSDictionary* tagsForDateFormatSymbols;
             
             if (!_is24Hour)
             {
-                hour = (index + 11) % 12 + 1;
+                hour = (index) % 12;
             }
             //            NSInteger day = _currentDateComponents.day;
             //            NSInteger month = _currentDateComponents.month;
             //            NSInteger year = _currentDateComponents.year;
-            cell.label.text = [NSString stringWithFormat:@"%ld", hour];
+            cell.label.text = [NSString stringWithFormat:@"%ld", (long)hour];
             //            if ((_minimumDate && (((year == [_minDateComponents year]) && (month == [_minDateComponents month]) && (day < [_minDateComponents day]))))
             //                     || (_maximumDate && ((year == [_maxDateComponents year]) && (month == [_maxDateComponents month]) && (day > [_maxDateComponents day]))))
             //            {
@@ -770,6 +774,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
             {
                 cell.type = PMStringTableViewCellTypeDisabled;
             }
+            
             break;
         }
         case PMDatePickerTagMonth:
@@ -791,11 +796,11 @@ static const NSDictionary* tagsForDateFormatSymbols;
                 cell.type = PMStringTableViewCellTypeDisabled;
             }
             
-            NSTextAlignment alignment = NSTextAlignmentRight;
+            NSTextAlignment alignment = NSTextAlignmentCenter; //NSTextAlignmentRight;
             
-            if (_useMonthsToLeftFromLocale && _monthToLeft) {
+            /*if (_useMonthsToLeftFromLocale && _monthToLeft) {
                 alignment = NSTextAlignmentLeft;
-            }
+            }*/
             
             cell.label.textAlignment = alignment;
             

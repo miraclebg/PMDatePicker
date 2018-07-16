@@ -13,9 +13,9 @@
 - (NSDate *)dateWithoutTime
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:(NSYearCalendarUnit
-                                                         | NSMonthCalendarUnit
-                                                         | NSDayCalendarUnit )
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear
+                                                         | NSCalendarUnitMonth
+                                                         | NSCalendarUnitDay )
                                                fromDate:self];
     
     return [calendar dateFromComponents:components];
@@ -51,7 +51,7 @@
 - (NSDate *) monthStartDate
 {
     NSDate *monthStartDate = nil;
-    [[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit
+    [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitMonth
                                     startDate:&monthStartDate
                                      interval:NULL
                                       forDate:self];
@@ -62,7 +62,7 @@
 - (NSDate *) midnightDate
 {
     NSDate *midnightDate = nil;
-    [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
+    [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay
                                     startDate:&midnightDate
                                      interval:NULL
                                       forDate:self];
@@ -72,16 +72,16 @@
 
 - (NSUInteger) numberOfDaysInMonth
 {
-    return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit
-                                              inUnit:NSMonthCalendarUnit
+    return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay
+                                              inUnit:NSCalendarUnitMonth
                                              forDate:self].length;
 }
 
 - (NSUInteger) weekday
 {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
-    NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:self];
+    NSDateComponents *weekdayComponents = [gregorian components:NSCalendarUnitWeekday fromDate:self];
     
     return [weekdayComponents weekday];
 }
