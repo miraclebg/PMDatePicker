@@ -522,8 +522,6 @@ static const NSDictionary* tagsForDateFormatSymbols;
         {
             NSLog( @"interval must be evenly divided into 60. default is 1. min is 1, max is 30" );
             mi = 1;
-            
-            return;
         }
         
         _minuteInterval = mi;
