@@ -31,6 +31,9 @@
 
 - (void) setDate:(NSDate *)date animated:(BOOL)animated;            // if animated is YES, animate the wheels of time to display the new date
 
+@property (nonatomic, assign) NSInteger      minYear;
+@property (nonatomic, assign) NSInteger      maxYear;
+
 // ==============================
 // PMDatePicker custom properties
 @property (nonatomic, strong) UIFont *font;                         // default is [UIFont boldSystemFontOfSize:24]

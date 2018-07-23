@@ -213,6 +213,9 @@ static const NSDictionary* tagsForDateFormatSymbols;
     
     _useMonthsToLeftFromLocale = YES;
     
+    self.minYear = 1800;
+    self.maxYear = 2200;
+    
     _horizontalPadding = 20.0f / 320.0f * self.frame.size.width;
     _verticalPadding = verticalPadding * self.frame.size.height;
     _minuteInterval = 1;
@@ -670,7 +673,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
             result = 31;
             break;
         case PMDatePickerTagYear:
-            result = 9998;
+            result = self.maxYear && self.maxYear > self.minYear ? self.maxYear - self.minYear + 1 : 1998;
             break;
         case PMDatePickerTagHour:
         {
@@ -808,7 +811,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
         {
             cell.textFont = self.textFont;
             
-            NSInteger year = index + 1;
+            NSInteger year = self.minYear + index;
             NSDateComponents *c = [[NSDateComponents alloc] init];
             c.year = year;
             NSDate *yearDate = [_calendar dateFromComponents:c];
