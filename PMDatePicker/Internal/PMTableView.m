@@ -327,7 +327,9 @@
     {
         BOOL scrollDown       = currentOffset.y + halfOfFrame > centerY;
         CGFloat diff          = contentHeight * (scrollDown?-1:1);
-        self.contentOffset    = CGPointMake(currentOffset.x, currentOffset.y + diff);
+        
+        CGPoint offset = CGPointMake(currentOffset.x, currentOffset.y + diff);
+        [self setContentOffset:offset animated:NO];
         
         if (_mode == PMTableViewModeCircular)
         {
@@ -369,7 +371,7 @@
                 return;
             }
             
-            [self scrollToRowAtIndex:index atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            [self scrollToRowAtIndex:index atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
             
             if ([__delegate respondsToSelector:@selector(tableView:didSelectRowAtIndex:)])
             {

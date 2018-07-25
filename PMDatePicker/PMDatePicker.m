@@ -457,6 +457,22 @@ static const NSDictionary* tagsForDateFormatSymbols;
     }
 }
 
+- (void)setMinYear:(NSInteger)minYear {
+    if (minYear != _minYear) {
+        _minYear = minYear;
+        
+        [self refreshUI];
+    }
+}
+
+- (void)setMaxYear:(NSInteger)maxYear {
+    if (maxYear != _maxYear) {
+        _maxYear = maxYear;
+        
+        [self refreshUI];
+    }
+}
+
 - (void)setMinimumDate:(NSDate *)minimumDate
 {
     if (_minimumDate != minimumDate) {
@@ -604,7 +620,8 @@ static const NSDictionary* tagsForDateFormatSymbols;
             
             switch ([tag integerValue]) {
                 case PMDatePickerTagYear:
-                    row += [_currentDateComponents year];
+                    
+                    row = [_currentDateComponents year] - self.minYear;
                     break;
                 case PMDatePickerTagMonth:
                     row += [_currentDateComponents month];
@@ -616,7 +633,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
                     row += ([_currentDateComponents hour] > 12 ? [_currentDateComponents hour] - 12 : [_currentDateComponents hour]) + 1;
                     break;
                 case PMDatePickerTagMinute:
-                    row += floor((double)[_currentDateComponents minute] / (double)_minuteInterval) + 1;
+                    row += _minuteInterval ? floor((double)[_currentDateComponents minute] / (double)_minuteInterval) + 1 : 0;
                     break;
                 case PMDatePickerTagAmPm:
                     row += ([_currentDateComponents hour] > 12)?2:1;
