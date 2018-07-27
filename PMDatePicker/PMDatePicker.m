@@ -168,14 +168,14 @@ static const NSDictionary* tagsForDateFormatSymbols;
 }
 
 /*
-- (void) didMoveToSuperview
-{
-    [super didMoveToSuperview];
-    
-    if (self.superview) {
-        [self refreshUI];
-    }
-}*/
+ - (void) didMoveToSuperview
+ {
+ [super didMoveToSuperview];
+ 
+ if (self.superview) {
+ [self refreshUI];
+ }
+ }*/
 
 - (void) initializeTableViewWithTag:(PMDatePickerTags)tag
 {
@@ -262,8 +262,8 @@ static const NSDictionary* tagsForDateFormatSymbols;
 - (void) reloadComponents
 {
     NSString *dateFormat = self.customDateFormat ?: [NSDateFormatter dateFormatFromTemplate:dateFormatsForPickerModes[@(_datePickerMode)]
-                                                           options:0
-                                                            locale:_locale];
+                                                                                    options:0
+                                                                                     locale:_locale];
     NSInteger index = [dateFormat hasPrefix:@"'"]?1:0;
     NSArray *comps = [dateFormat componentsSeparatedByString:@"'"];
     NSMutableString *df = [NSMutableString string];
@@ -301,7 +301,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
         [arr addObject:index];
         [indexForComponent setObject:index forKey:component];
     }
-
+    
     [arr sortUsingSelector:@selector(compare:)];
     NSMutableArray *order = [arr mutableCopy];
     
@@ -369,7 +369,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
     if (disabledTextColor != _disabledTextColor) {
         _disabledTextColor = disabledTextColor;
         
-       
+        
         for (NSNumber *tag in _tableViewsByTag)
         {
             PMDatePickerTableView *tableView = _tableViewsByTag[tag];
@@ -559,7 +559,7 @@ static const NSDictionary* tagsForDateFormatSymbols;
     _yearDateFormatter.locale = _yearLocale ?: _locale;
     
     [_yearDateFormatter setDateFormat:[NSDateFormatter dateFormatFromTemplate:@"yyyy"
-                                                                  options:0 locale:_yearDateFormatter.locale]];
+                                                                      options:0 locale:_yearDateFormatter.locale]];
     
     if (_datePickerMode == UIDatePickerModeDate)
     {
@@ -807,9 +807,9 @@ static const NSDictionary* tagsForDateFormatSymbols;
             {
                 cell.type = PMStringTableViewCellTypeToday;
             } else if ((_minimumDate && ((year == [_minDateComponents year])
-                                       && (month < [_minDateComponents month])))
-                     || (_maximumDate && ((year == [_maxDateComponents year])
-                                          && (month > [_maxDateComponents month]))))
+                                         && (month < [_minDateComponents month])))
+                       || (_maximumDate && ((year == [_maxDateComponents year])
+                                            && (month > [_maxDateComponents month]))))
             {
                 cell.type = PMStringTableViewCellTypeDisabled;
             }
@@ -817,8 +817,8 @@ static const NSDictionary* tagsForDateFormatSymbols;
             NSTextAlignment alignment = NSTextAlignmentCenter; //NSTextAlignmentRight;
             
             /*if (_useMonthsToLeftFromLocale && _monthToLeft) {
-                alignment = NSTextAlignmentLeft;
-            }*/
+             alignment = NSTextAlignmentLeft;
+             }*/
             
             cell.label.textAlignment = alignment;
             
@@ -916,7 +916,10 @@ static const NSDictionary* tagsForDateFormatSymbols;
             _currentDateComponents.month = index + 1;
             break;
         case PMDatePickerTagYear:
-            _currentDateComponents.year = index + 1;
+            // 1960
+            // 2020
+            // 2005
+            _currentDateComponents.year = index + self.minYear;
             break;
         default:
             break;
